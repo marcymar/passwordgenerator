@@ -2,19 +2,24 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Password Generator</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
+            font-family: 'Open Sans', sans-serif;
         }
     </style>
 </head>
+
 
 <body>
     <div class="wrapper">
@@ -25,79 +30,84 @@
             <div class="card-header">
                 <h2>Generate a Password</h2>
             </div>
+            <br>
+            <h4>Select your parameters:</h4>
+            <!-- Slider -->
+            <div class="content">
+                <p>Password length:</p>
+                <input type="range" min="8" max="128" name="slider" id="slider">
+                <div id="length"></div>
+                <br>
+            </div>
+            <br>
+            <!-- Generate PW -->
             <div class="card-body">
                 <textarea readonly id="password" placeholder="Your Secure Password"
                     aria-label="Generated Password"></textarea>
             </div>
             <div class="card-footer">
-                <button type="button" id="generate" class="btn">Generate Password</button>
+                <button id="generate" class="btn" onclick="generate()">Generate Password</button>
             </div>
+            <!-- Previsou PW -->
+            <div class="previouspw"></div>
+            <b>Previously Generated Passwords</b>
+            <br>
+            <div id="lastpw"></div>
         </div>
     </div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous">
-</script>
-
+    </div>
     <script>
 
-    let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-    let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':']
+        let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+        let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':']
 
-    const generatePassword = () => {
+        const generatePassword = function () {
 
-        let passwordParameters = []
-        let usableParameters = []
-        let parameters = []
+            let passwordParameters = []
+            let usableParameters = []
+            let parameters = []
 
-        let length = parseInt(prompt('How many characters do you want your password to be?  Choose between 8 and 128 characters.'))
+            // let length = parseInt(prompt('How many characters do you want your password to be?  Choose between 8 and 128 characters.'))
 
-            if (length < 8 || length > 128) {
-                alert('Not a valid input.\nPlease choose between 8 and 128.')
-                return
-            }
-            if (confirm('Do you want to include Uppercase characters?')) {
+            // if (length < 8 || length > 128) {
+            //     alert('Not a valid input.\nPlease choose between 8 and 128.')
+            //     return
+        }
+        if (confirm('Do you want to include Uppercase characters?')) {
             passwordParameters = passwordParameters.concat(upperCase)
             passwordParameters.push(upperCase[Math.floor(Math.random() * upperCase.length)])
-            }
-            if (confirm('Do you want to include lowercase characters?')) {
-            passwordParameters = passwordParameters.concat(lowerCase)    
+        }
+        if (confirm('Do you want to include lowercase characters?')) {
+            passwordParameters = passwordParameters.concat(lowerCase)
             passwordParameters.push(lowerCase[Math.floor(Math.random() * lowerCase.length)])
-            }
-            if (confirm('Do you want to include number characters?')) {
+        }
+        if (confirm('Do you want to include number characters?')) {
             passwordParameters = passwordParameters.concat(upperCase)
             passwordParameters.push(numbers[Math.floor(Math.random() * numbers.length)])
-            }
-            if (confirm('Do you want to include special characters?')) {
+        }
+        if (confirm('Do you want to include special characters?')) {
             passwordParameters = passwordParameters.concat(upperCase)
             passwordParameters.push(special[Math.floor(Math.random() * special.length)])
-            }
-            for (let i = 0; i < length; i++) {
-                (passwordParameters[Math.floor(Math.random () * passwordParameters.length)])
-                
-            }
-            for (let i = 0; i < usableParameters.length; i++) {
+        }
+        for (let i = 0; i < length; i++) {
+            (passwordParameters[Math.floor(Math.random() * passwordParameters.length)])
+
+        }
+        for (let i = 0; i < usableParameters.length; i++) {
             password[i] = usableParameters[i]
         }
 
         }
-        
-            document.getElementById('generate').addEventListener('click', () => {
-                let generate = generatePassword()
-                document.getElementById('password').textContent =
-                    password
-            });
+
+        document.getElementById('generate').addEventListener('click', function () {
+            let generate = generatePassword()
+            document.getElementById('password').value =
+                password
+        });
     </script>
-    <!--<script src="script.js"></script> -->
+    <script src="script.js"></script>
 </body>
 
 </html>

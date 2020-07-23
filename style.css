@@ -70,7 +70,7 @@ header {
 
 .btn {
     border: none;
-    background-color: rgb(8, 128, 175);
+    background-color: rgb(8, 94, 175);
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
     color: hsl(0, 0%, 100%);
@@ -112,6 +112,18 @@ button[disabled] {
     border-radius: 6px;
     resize: none;
     overflow: hidden;
+}
+
+#slider {
+    width: 100%;
+}
+
+.previouspw {
+    margin-bottom: 20px;
+}
+
+h6 {
+    font-size: smaller;
 }
 
 @media (max-width: 690px) {
