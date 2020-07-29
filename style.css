@@ -17,6 +17,7 @@ body {
     padding-top: 30px;
     padding-left: 20px;
     padding-right: 20px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 header {
@@ -52,6 +53,7 @@ header {
 
 .card-footer {
     text-align: center;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .card-footer::before {
@@ -81,7 +83,7 @@ header {
     padding: 14px 34px;
     text-align: center;
     cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 button[disabled] {
@@ -112,18 +114,6 @@ button[disabled] {
     border-radius: 6px;
     resize: none;
     overflow: hidden;
-}
-
-#slider {
-    width: 100%;
-}
-
-.previouspw {
-    margin-bottom: 20px;
-}
-
-h6 {
-    font-size: smaller;
 }
 
 @media (max-width: 690px) {
