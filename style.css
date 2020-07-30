@@ -86,6 +86,10 @@ header {
     font-family: 'Quicksand', sans-serif;
 }
 
+.btn:hover {
+    box-shadow: black 0px 1px 6px 0px 
+}
+
 button[disabled] {
     cursor: default;
     background: #c0c7cf;
